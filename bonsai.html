@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css"
+			  href="style.css">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css"
+		href="https://fonts.googleapis.com/css?family=Dosis">
+		<link rel="icon" type="image/png" href="eye.png" />
+		<title>Portfolio</title>
+		<style>
+      		body {
+        		font-family: 'Dosis', sans-serif;
+       			font-size: 20px;
+     			 }
+     		IMG.displayed {
+   				display: block;
+    			margin-left: auto;
+    			margin-right: auto;
+    			}
+    	</style>
+	</head>
+	<body>
+		<!--BEGIN NAVIGATION BAR-->
+		<ul id="navbar">
+  			<li class="navitem"><a href="index.html">Home</a></li>
+  			<li class="navitem"><a href="hobby.html">Hobby Website</a></li>
+  			<li class="navitem"><a class="active" href="bonsai.html">Bonsai Art</a></li>
+  			<li class="navitem"><a href="dream.html">Dream Vacation</a></li>
+  			<li class="navitem"><a href="scratch.html">Scratch Game</a></li>
+  			<li class="navitem"><a href="python.html">Python Adventure</a></li>
+  			<li class="navitem"><a href="image.html">Image Artist</a></li>
+  			<li class="navitem"><a href="final.html">Final Project</a></li>
+  				</div>
+  			</li>
+
+		</ul>
+		
+		<!--END NAVIGATION BAR-->
+		<div id="main">
+		<h1>BonsaiJS Art</h1>
+		
+		<img src="CSE_Bonsai_HowardT.png" alt="Bonsai image" height="500px" class="displayed" border="1">		
+		<p>
+			<pre>
+var smile = new Path();
+var aRect1 = new Rect(180, 270, 40, 10).fill('black').addTo(stage);
+var aRect2 = new Rect(330, 270, 40, 10).fill('black').addTo(stage);
+smile.stroke("black", 9);			
+smile.moveTo(200, 400);
+smile.lineTo(225, 425);
+smile.lineTo(275, 450);
+smile.lineTo(325,425);				
+smile.lineTo(350,400);
+//smile.fill("black");
+smile.addTo(stage);
+new Circle(265, 350, 9, 100).fill("black").addTo(stage);
+new Circle(285, 350, 9, 100).fill("black").addTo(stage);
+new Star(200, 300, 20, 10).fill("green").addTo(stage);
+new Star(350, 300, 20, 10).fill("green").addTo(stage);
+new Star(200, 300, 15, 10).fill("red").addTo(stage);
+new Star(350, 300, 15, 10).fill("red").addTo(stage);
+new Star(200, 300, 10, 10).fill("green").addTo(stage);
+new Star(350, 300, 10, 10).fill("green").addTo(stage);
+new Star(200, 300, 5, 10).fill("red").addTo(stage);
+new Star(350, 300, 5, 10).fill("red").addTo(stage);
+new Circle(280, 350, 200, 100).stroke("red",30).addTo(stage);
+new Circle(280, 350, 200, 100).stroke("orange",25).addTo(stage);
+new Circle(280, 350, 200, 100).stroke("yellow",20).addTo(stage);
+new Circle(280, 350, 200, 100).stroke("green",15).addTo(stage);
+new Circle(280, 350, 200, 100).stroke("blue",10).addTo(stage);
+new Circle(280, 350, 200, 100).stroke("purple",5).addTo(stage);
+aRect1.animate('1s', { y: 250 });
+aRect2.animate('1s', { y: 250 });
+			</pre>
+		</p>
+		
+		</div>
+	</body>
+
+</html>
