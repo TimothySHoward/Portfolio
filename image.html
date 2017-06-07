@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css"
+			  href="style.css">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css"
+		href="https://fonts.googleapis.com/css?family=Dosis">
+		<link rel="icon" type="image/png" href="tea.png" />
+		<title>Portfolio</title>
+		<style>
+      		body {
+        		font-family: 'Dosis', sans-serif;
+       			font-size: 20px;
+     			 }
+     		IMG.displayed {
+   				display: block;
+    			margin-left: auto;
+    			margin-right: auto;
+    			}
+    	</style>
+	</head>
+	<body>
+		<!--BEGIN NAVIGATION BAR-->
+		<ul id="navbar">
+  			<li class="navitem"><a href="index.html">Home</a></li>
+  			<li class="navitem"><a href="hobby.html">Hobby Website</a></li>
+  			<li class="navitem"><a href="bonsai.html">Bonsai Art</a></li>
+  			<li class="navitem"><a href="dream.html">Dream Vacation</a></li>
+  			<li class="navitem"><a href="scratch.html">Scratch Game</a></li>
+  			<li class="navitem"><a href="python.html">Python Adventure</a></li>
+  			<li class="navitem"><a class="active" href="image.html">Image Artist</a></li>
+  			<li class="navitem"><a href="final.html">Final Project</a></li>
+  				</div>
+  			</li>
+
+		</ul>
+		
+		<!--END NAVIGATION BAR-->
+		<div id="main">
+		<h1>Image Artist</h1>
+		<p>
+			This is a simple image filter made in python. It inverts the colour of every pixel and then multiplies the RGB values by 3
+		</p>
+		<img src="student_2.JPG" alt="Student Before" height="500px" class="displayed" border="1">		<img src="student_2.png" alt="Student After" height="500px" class="displayed" border="1">
+		<p>
+		<pre>
+def lucid_Filter(original_image):
+    #converts the image to a numpy ndarray
+    original_image = original_image.convert("RGB")
+    img = np.array(original_image)
+    #gets the width and height of the original image
+    height = len(img)
+    width = len(img[0])
+    for row in range(0, height):
+        for column in range(0, width):
+            r,g,b = img[row][column]
+            #for every pixel it adds a random value from 1 to 255. if the value is over 255 then it makes it 255
+            #r = r + random.randint(1,255)
+            #if r > 255:
+             #   r = 255
+            #g = g + random.randint(1,255)
+            #if g > 255:
+             #   g = 255
+            #b = b + random.randint(1,255)
+            #if b > 255:
+             #   b = 255
+    #inverts the colour of every pixel and multiplies the RGB values by 3
+            r = 255 - r * 3
+            g = 255 - g * 3
+            b = 255 - b * 3
+            img[row][column] = [r,g,b] # red + green = yellow
+    #convert it back to an image from an array
+    result = PIL.Image.fromarray(np.uint8(img))
+    return result
+    
+		</pre>
+		</p>
+		
+		</div>
+	</body>
+
+</html>

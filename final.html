@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css"
+			  href="style.css">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css"
+		href="https://fonts.googleapis.com/css?family=Dosis">
+		<link rel="icon" type="image/png" href="tea.png" />
+		<title>Portfolio</title>
+		<style>
+      		body {
+        		font-family: 'Dosis', sans-serif;
+       			font-size: 20px;
+     			 }
+     		IMG.displayed {
+   				display: block;
+    			margin-left: auto;
+    			margin-right: auto;
+    			}
+    	</style>
+	</head>
+	<body>
+		<!--BEGIN NAVIGATION BAR-->
+		<ul id="navbar">
+  			<li class="navitem"><a href="index.html">Home</a></li>
+  			<li class="navitem"><a href="hobby.html">Hobby Website</a></li>
+  			<li class="navitem"><a href="bonsai.html">Bonsai Art</a></li>
+  			<li class="navitem"><a href="dream.html">Dream Vacation</a></li>
+  			<li class="navitem"><a href="scratch.html">Scratch Game</a></li>
+  			<li class="navitem"><a href="python.html">Python Adventure</a></li>
+  			<li class="navitem"><a href="image.html">Image Artist</a></li>
+  			<li class="navitem"><a class="active" href="final.html">Final Project</a></li>
+  				</div>
+  			</li>
+
+		</ul>
+		
+		<!--END NAVIGATION BAR-->
+		<div id="main">
+		<h1>Final Project</h1>
+		<p>
+				For my Final Project I decided to make 2 more image filters, but this time make them a little more complex than the first filter.
+				The first filter Essentially creates a black and white stencil of the original image and then pastes it over a Colourful Gradient.
+				The second Filter First Converts The Image into Grayscale and then Overlays A Transparent Gradient on top.
+		</p>
+		<img src="dolly.jpg" alt="dolly before" height="500px" class="displayed" border="1">
+		<img src="dolly.png" alt="dolly after" height="500px" class="displayed" border="1">			
+		<p>
+			<pre>
+def stencil_filter(original_image):
+    #converts the image to a numpy ndarray
+    original_image = original_image.convert("RGBA")
+    img = np.array(original_image)
+    #gets the width and height of the original image
+    width, height = original_image.size
+    for row in range(0, height):
+        for column in range(0, width):
+            if sum(img[row][column]) < 600:
+                img[row][column] = (0, 0, 0, 255)
+            if sum(img[row][column]) > 600:
+                img[row][column] = (255,255,255, 0)
+    #convert it back to an image from an array
+    result = PIL.Image.fromarray(np.uint8(img))
+    #opens the gradient image
+    gradient_img = PIL.Image.open('gradient.png')
+    #resizes gradient image to the same size as original image
+    gradient_resize = gradient_img.resize((width, height))
+    gradient_resize.paste(result, (0, 0), mask=result)
+    return gradient_resize			
+			</pre>
+		</p>
+			<img src="Reagan_1981.jpg" alt="Reagan before" height="500px" class="displayed" border="1">
+			<img src="Reagan_1981.png" alt="Reagan after" height="500px" class="displayed" border="1">
+
+		<p>
+			<pre>
+def rainbow_filter(original_image):
+    #converts the image to a numpy ndarray
+    original_image = original_image.convert("RGB")
+    img = np.array(original_image)
+    #sets the values of the width and height variables
+    width, height = original_image.size
+    #for every pixel it changes the colour to the average of the rgb values
+    for row in range(0, height):
+        for column in range(0, width):
+            #gets RGB values
+            r,g,b = img[row][column]
+            #gets the average of all 3 values added together
+            gray = ((0.21*r) + (0.72*g) + (0.07*b))
+            #sets RGB values to the Gray average
+            r=gray
+            g=gray
+            b=gray
+            img[row][column] = [r,g,b]
+    #convert it back to an image from an array
+    result = PIL.Image.fromarray(np.uint8(img))
+    #converts the result of the grayscale image to RGBA
+    result = result.convert("RGBA")
+    #opens the gradient image
+    gradient_img = PIL.Image.open('gradient.png')
+    #resizes gradient image to the same size as original image
+    gradient_resize = gradient_img.resize((width, height))
+    #pastes gradient onto original image
+    result.paste(gradient_resize, (0, 0), mask=gradient_resize)
+    return result
+			</pre>
+		</p>
+		</div>
+	</body>
+
+</html>
